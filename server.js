@@ -60,7 +60,7 @@ app.get("/getJobs", async (req, res) => {
 app.post("/job", async (req, res) => {
   let data  = req.body;
   console.log(data);
-  res.status(201).send("Chimpanzee");
+  res.status(201).send("Chimpanzee222");
 //   res.json(data)
 });
 
