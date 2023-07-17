@@ -4,6 +4,11 @@ require("dotenv").config();
 const { ethers } = require("ethers");
 const abi1 = require("./abis/abi.json");
 const abi2 = require("./abis/jobs.json");
+const cors = require('cors')
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
 const contractAddress = "0xFC1f2517b07BDF376cBBE246a7De87eDeE4979de";
 const contract2 = "0x387E859cC638080e313FeAa546331E2E8a4b916B";
@@ -13,6 +18,7 @@ const provider = new ethers.providers.JsonRpcProvider(
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors(corsOptions));
 app.get("/get", async (req, res) => {
   try {
     const userAddress = "0x5859464Befb9d3275B7e35De616f8fEAf79336B7";
