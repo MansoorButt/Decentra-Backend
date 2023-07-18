@@ -5,6 +5,7 @@ const { ethers } = require("ethers");
 const abi1 = require("./abis/abi.json");
 const abi2 = require("./abis/jobs.json");
 const cors = require('cors')
+const axios = require('axios');
 var corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -58,9 +59,23 @@ app.get("/getJobs", async (req, res) => {
   }
 });
 app.post("/job", async (req, res) => {
-  let data  = req.body;
-  console.log(data);
-  res.status(201).send("Chimpanzee222");
+//   let data  = req.body;
+//   console.log(data);
+//   res.status(201).send("Chimpanzee222");
+    try {
+        await axios.post("https://a095-38-7-190-26.ngrok-free.app/test", { "data" : {
+    
+        "amount" : 1800,
+        "time": "04:21:30 PM",
+        "date" : "10/06/2021",
+        "month":"June"
+        }
+       })
+       res.send("Hello from my PC");
+    } catch (error) {
+        console.log(error)
+    }
+ 
 //   res.json(data)
 });
 
